@@ -1,0 +1,36 @@
+div.reload-link, a.reload-link {
+	display:block;
+	text-align:center;
+	padding-right:10px;
+}
+
+div.report-description {
+	font-size:90%;
+}
+
+td.report-category {
+	font-size:12px;
+	font-weight:bold;
+	color:white;
+	background-color:#0066cc;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-right:4px;
+}
+
+td.report-item {
+	font-size:10px;
+	border:solid #d0d0d0 1px;
+	padding-left:15px;
+	padding-right:15px;
+}
+
+td.report-divider {
+	border-top:solid #d0d0d0 1px;
+}
+
+div.report-category-total {
+	float:right;
+	background-color:#0099ff;
+	width:100px;
+}		

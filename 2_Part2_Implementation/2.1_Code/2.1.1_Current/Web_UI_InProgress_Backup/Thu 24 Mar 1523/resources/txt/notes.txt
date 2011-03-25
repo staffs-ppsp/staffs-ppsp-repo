@@ -1,0 +1,6 @@
+${template-toolbar-contents}
+	<a href="?page=main&amp;action=create" class="link-enabled">Create New Report</a>
+	&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+	<div class="link-disabled">Print Report</div>
+
+
