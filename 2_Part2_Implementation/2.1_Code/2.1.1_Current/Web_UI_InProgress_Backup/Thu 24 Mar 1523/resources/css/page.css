@@ -1,0 +1,35 @@
+div.main-controls-container {
+	display:table-cell;
+	text-align:left;
+}
+
+div.main-controls-control {
+	padding-left:10px;
+	padding-right:10px;
+}
+
+td.main-controls-cell {
+	border:solid #d0d0d0 1px;
+	padding-top:10px;
+	padding-bottom:10px;"
+}
+
+td.film-cell {
+	padding-left:5px;
+	padding-right:5px;
+}
+
+div.film-title {
+	font-weight:bold;
+	font-size:120%;
+}
+
+div.film-description {
+	font-size:60%;
+	text-align:justify;
+}
+
+div.film-info {
+	margin-top:5px;
+	font-size:80%;
+}

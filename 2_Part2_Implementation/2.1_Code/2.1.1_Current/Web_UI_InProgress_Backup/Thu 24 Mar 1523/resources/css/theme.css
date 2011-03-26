@@ -1,0 +1,98 @@
+body, table.page-table {
+	margin:0px;
+	padding:0px;
+	font-size:11px;
+	font-family:Tahoma;
+	background:#f0f0f0;
+	height:100%;
+}
+
+.header {
+	background:url(/resources/images/header.png) repeat-x;
+	height:26px;
+	border-bottom:solid #d0d0d0 1px;
+	line-height:25px;
+}
+
+.toolbar {
+	background:url(/resources/images/toolbar.png) repeat-x;
+	height:26px;
+}
+
+td.page-header {
+	font-weight:bold;
+	padding-left:10px;
+	border:solid #d0d0d0 1px;
+}
+
+td.page-toolbar {
+	padding-left:20px;
+}
+
+div.sidebar-header {
+	text-align:center;
+}
+
+a.link-enabled {
+	color:blue;
+}
+
+a.link-enabled:hover {
+	color:red;
+}
+
+div.link-disabled, a.link-disabled {
+	color:#666666;
+	text-decoration:none;
+	cursor:default;
+}
+
+div.link-disabled {
+	display:inline;
+}
+
+td.container {
+	padding:5px;
+}
+
+div.container {
+	height:100%;
+	border:solid #d0d0d0 1px;
+}
+
+div.container-inner {
+	margin:4px;
+}
+
+div.page-container {
+	background-color:#ffffff;
+}
+
+table.page-table {
+	min-height:60%;
+}
+
+div.main-area {
+	font-size:120%;
+	text-align:center;
+}
+
+div.main-title-container {
+	background-color:#ece9d8;
+	border:solid black 1px;
+	padding-top:12px;
+	padding-bottom:12px;
+}
+
+h2.main-title {
+	display:inline;
+	text-decoration:underline;
+}
+
+div.error {
+	background-color:inherit;
+	color:#ff0000;
+	font-weight:bold;
+	margin-top:10px;
+	text-decoration:underline;
+}
