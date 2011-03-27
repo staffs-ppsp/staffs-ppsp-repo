@@ -1,9 +1,9 @@
 Update: 25.03.2011 23:46 – David Russell
 
 ADDED:
-	-	various constructors
-	-	advanced booking functionality
-	-	most of the booking functionality
+- various constructors
+- advanced booking functionality
+- most of the booking functionality
 
 Update 26.03.2011 18.41 – David Russell
 
@@ -23,4 +23,12 @@ CHANGED
 
 ADDED
 - Basis path testing
+
+Update 27.03/2011 22.40 - David Russell
+
+CHANGED
+- Fixed some object orientation
+
+ADDED
+- More basis path testing
 
