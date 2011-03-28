@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * 
  * @author Dave Russell
- * @version 1.0
+ * @version 1.6
  * @since 1.6
  * 
  */
@@ -44,6 +44,10 @@ enum Row {
 	public int getRowNum() {
 		return intRowNum;
 	}
+
+	public void setRowNum(int _intNum) {
+		this.intRowNum = _intNum;
+	}
 }
 
 /**
@@ -68,29 +72,25 @@ enum Column {
 	public int getColNum() {
 		return intColNum;
 	}
+
+	public void setColNum(int _intNum) {
+		this.intColNum = _intNum;
+	}
 }
 
 public class Seats {
 
 	// Variable declarations
 
-	private int intStaffID;
-
-	private Customer objCustomer;
 	private Booking objBooking;
-	private FilmShowing objFilmShowing;
-	private Staff objStaff;
-
-	private double dblTotalPrice;
-	private Date dteDateTime;
 	private Date dteCurrentDateTime;
-	private String strDateTime;
 	private String strCurrentDateTime;
 
 	private int intBookingID; // Number to represent the Booking ID belonging to
 	// a seat
 	private int intShowingID; // Number to represent the Showing ID that the
 	// seat belongs to
+	private double dblTotalPrice;
 
 	private Row objRow; // Enumerated data type Row, represents which row the
 	// seat is in
@@ -125,10 +125,19 @@ public class Seats {
 		arrSeats = new int[9][16];
 	}
 
+	public Seats(Booking _objBooking) {
+		this.objBooking = _objBooking;
+		this.intNumSeats = getIntNumSeats();
+		this.dblTotalPrice = getDoubleTotalPrice();
+		this.objRow = getObjRow();
+		this.objColumn = getObjColumn();
+	}
+
 	public Seats(Booking _objBooking, int _intNumSeats, Row _objRow,
 			Column _objColumn) {
 		this.objBooking = _objBooking;
 		this.intNumSeats = _intNumSeats;
+		this.dblTotalPrice = getDoubleTotalPrice();
 		this.objRow = _objRow;
 		this.objColumn = _objColumn;
 	}
@@ -146,27 +155,27 @@ public class Seats {
 	public void addSeat(Seats _objSeats) throws Exception {
 		try {
 
-//			if (!getCurrentDateTime().equalsIgnoreCase(
-//					_objSeats.objFilmShowing.getDateTime())) {
-				for (int i = 0; i < _objSeats.intNumSeats; i++) {
-					if (arrSeats[_objSeats.objRow.getRowNum()][_objSeats.objColumn
-							.getColNum() + i] == 0) {
-						arrSeats[_objSeats.objRow.getRowNum()][_objSeats.objColumn
-								.getColNum() + i] = _objSeats.objBooking
-								.getIntBookingID();
-						bookings.add("Booking ID: "
-								+ _objSeats.objBooking.getIntBookingID() + "\n"
-								+ "Row: " + _objSeats.objRow.getRowNum() + 1
-								+ "\n" + "Column: " + _objSeats.objColumn);
-					} else
-						throw new Exception();
-				}
-//			} else {
-//				System.out.println("Unable to book at this time");
-//			}
+			// if (!getCurrentDateTime().equalsIgnoreCase(
+			// _objSeats.objFilmShowing.getDateTime())) {
+			for (int i = 0; i < _objSeats.intNumSeats; i++) {
+				if (arrSeats[_objSeats.objRow.getRowNum()][_objSeats.objColumn
+						.getColNum() + i] == 0) {
+					arrSeats[_objSeats.objRow.getRowNum()][_objSeats.objColumn
+							.getColNum() + i] = _objSeats.objBooking
+							.getIntBookingID();
+					bookings.add("Booking ID: "
+							+ _objSeats.objBooking.getIntBookingID() + "\n"
+							+ "Row: " + _objSeats.objRow.getRowNum() + 1 + "\n"
+							+ "Column: " + _objSeats.objColumn);
+				} else
+					throw new Exception();
+			}
+			// } else {
+			// System.out.println("Unable to book at this time");
+			// }
 		} catch (Exception e) {
 			System.out.println("Seat Already Booked: " + _objSeats.objRow
-					+ _objSeats.objColumn.getColNum());
+					+ _objSeats.objColumn);
 		}
 	}
 
@@ -202,6 +211,39 @@ public class Seats {
 		return strScreen;
 	}
 
+	public void setObjRow(Row _objRow) {
+		this.objRow = _objRow;
+	}
+
+	public Row getObjRow() {
+		return objRow;
+	}
+
+	public void setObjColumn(Column _objColumn) {
+		this.objColumn = _objColumn;
+	}
+
+	public Column getObjColumn() {
+		return objColumn;
+	}
+
+	public int getIntNumSeats() {
+		return intNumSeats;
+	}
+
+	public int setIntNumSeats(int intNumSeats) {
+		this.intNumSeats = intNumSeats;
+		return intNumSeats;
+	}
+
+	public void setDblTotalPrice(int _dblTotalPrice) {
+		this.dblTotalPrice = _dblTotalPrice;
+	}
+
+	public double getDoubleTotalPrice() {
+		return dblTotalPrice;
+	}
+
 	@Override
 	public String toString() {
 		for (int i = 0; i < arrSeats.length; i++) {
@@ -230,4 +272,5 @@ public class Seats {
 		strCurrentDateTime = sdf.format(dteCurrentDateTime);
 		return strCurrentDateTime;
 	}
+
 }

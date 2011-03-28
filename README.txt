@@ -32,3 +32,9 @@ CHANGED
 ADDED
 - More basis path testing
 
+Update 28.03.2011 00.09 - David Russell
+
+CHANGED
+- some method in FilmShowing and Film class
+- Added final document beginnings
+

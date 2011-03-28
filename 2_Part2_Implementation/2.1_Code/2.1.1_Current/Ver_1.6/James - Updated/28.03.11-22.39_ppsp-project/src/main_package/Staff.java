@@ -23,7 +23,6 @@ public class Staff extends Person {
 	private int intAge;
 	private String strTelephone;
 	private ArrayList<Staff> staff;
-	private String strStaff;
 	private Random random;
 
 	public Staff() {
@@ -31,7 +30,6 @@ public class Staff extends Person {
 	}
 
 	public Staff(String _strStaff) {
-		strStaff = _strStaff;
 		staff = new ArrayList<Staff>();
 	}
 
