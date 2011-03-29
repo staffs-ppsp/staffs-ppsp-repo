@@ -38,3 +38,14 @@ CHANGED
 - some method in FilmShowing and Film class
 - Added final document beginnings
 
+Update 29.03.2011 21.29
+
+CHANGED
+- functionality in main method
+- some classes are modified
+- modified some documents
+
+ADDED
+- james's document
+- james's new code
+

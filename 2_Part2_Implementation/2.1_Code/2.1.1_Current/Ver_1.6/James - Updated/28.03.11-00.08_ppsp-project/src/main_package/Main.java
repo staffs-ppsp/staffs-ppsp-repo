@@ -12,31 +12,41 @@ import java.util.Scanner;
 
 public class Main {
 
+	// double for displaying the version of the software in the menu
 	static final double dblVer = 1.6;
 
+	// integer used for input and controlling menu drivers
 	static int intChoice;
 
+	// two values used for case statements in the menu driver
 	static String strCase;
 	static int intCase;
 
+	// Strings to assign the value of input user name and password
 	static String strInputUserName;
 	static String strInputPassword;
 
+	// Strings identifying the admin and user usernames and passwords
 	static final String strAdminUsername = "admin";
 	static final String strAdminPassword = "admin";
 	static final String strUsername = "user";
 	static final String strPassword = "user";
 
+	// static number of attempts for logins and the counter for this value
 	static final int intAttempts = 3;
 	static int intAttemptCtr = 0;
 
+	// a boolean control value and an escape value
 	static boolean boolControl = true;
 	static int escape = 1;
 
+	// declaring new scanner, inputstreamreader and buffered reader objects for
+	// input
 	static Scanner kybd = new Scanner(System.in);
 	static InputStreamReader in = new InputStreamReader(System.in);
 	static BufferedReader lineReader = new BufferedReader(in);
 
+	// declaring new cinema objects
 	static Seats screen1 = new Seats("Screen 1");
 	static FilmShowing showings = new FilmShowing("Showings");
 	static Staff staff = new Staff("Staff");
@@ -44,79 +54,162 @@ public class Main {
 	static Customer customers = new Customer("Customers");
 	static Booking bookings = new Booking("Bookings");
 
+	// constructing a new staff object
 	static Staff stf1 = new Staff("James", "Nightingale", 20, "07123283823",
 			456, "Manager", "jn1", "lalalala");
 
+	// begin main class
 	public static void main(String[] args) {
 
+		// add a staff member to the list of staff
 		staff.addStaff(stf1);
 
+		// constructing new film objects
 		Film flm1 = new Film("Paul", 15);
 		Film flm2 = new Film("The Exorcist", 18);
 		Film flm3 = new Film("Spiderman", 12);
 
+		// adding the films to the films collection
 		films.addFilm(flm1);
 		films.addFilm(flm2);
 		films.addFilm(flm3);
 
+		// constructing new instances of filmshowing
 		FilmShowing fs1 = new FilmShowing(flm1, "27/03/2011", screen1, 6.99);
 		FilmShowing fs2 = new FilmShowing(flm2, "27/03/2011", screen1, 7.99);
 		FilmShowing fs3 = new FilmShowing(flm3, "27/03/2011", screen1, 5.99);
 
+		// adding the showings to the showings collection
 		showings.addFilmShowing(fs1);
 		showings.addFilmShowing(fs2);
 		showings.addFilmShowing(fs3);
 
+		// constructing a new customer, booking and seat object
+		// addSeat method throws exception, this must be caught
 		Customer cst1 = new Customer("Dave", "Russell", 21, "07533475113");
-
 		Booking booking = new Booking(cst1, stf1, fs1);
-		
 		Seats seats = new Seats(booking);
 		try {
 			screen1.addSeat(seats);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} 
-
-		try {
-			advancedBooking();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
+		while (escape == 1) {
+
+			login();
+			try {
+				intChoice = kybd.nextInt();
+				switch (intChoice) {
+				case 1:
+					if (loginAdminFunction() == 1) {
+						while (intChoice != 0) {
+							try {
+								adminMenu();
+								intChoice = kybd.nextInt();
+								switch (intChoice) {
+								case 1:
+									kybd.reset();
+									addFilmFunction();
+									break;
+								case 2:
+									staff.viewStaff();
+									break;
+								case 0:
+									break;
+								default:
+									System.out.println("Unrecognised Command: "
+											+ intChoice);
+									kybd.nextLine();
+									break;
+								}
+							}// end switch
+							catch (Exception e) {
+								System.out.println("Invalid Entry");
+								kybd.nextLine();
+							}
+						}// end while
+					}
+					// end if
+					break; // end case 1
+				case 2:
+					if (loginUserFunction() == 1) {
+						kybd.reset();
+						while (intChoice != 0) {
+							userMenu();
+							try {
+								intChoice = kybd.nextInt();
+								switch (intChoice) {
+								case 1:
+									while (intChoice != 3) {
+										bookingMenu();
+										kybd.reset();
+										intChoice = kybd.nextInt();
+										switch (intChoice) {
+										case 1:
+											kybd.reset(); // CHANGE
+											advancedBooking();
+											break;
+										case 2:
+											kybd.reset();
+											makeBooking(); // CHANGE
+											break;
+										case 3:
+											break;
+										default:
+											System.out
+													.println("Unrecognised Command: "
+															+ intChoice + "\n");
+											kybd.reset();
+										}
+									}
+									break;
+								case 2:
+									displayShowings();
+									kybd.reset();
+									intChoice = kybd.nextInt();
+									switch (intChoice) {
+									case 1:
+										kybd.reset();
+										showings.showShowings();
+									}// end switch
+									break;
+								case 3:
+									bookings.showBookings();
+									break;
+								case 4:
+									break;
+								case 0:
+									break;
+								default:
+									System.out.println("Unrecognised Command: "
+											+ intChoice + "\n");
+									kybd.reset();
+								}// end switch
+							} catch (Exception e) {
+								System.out.println("Invalid Entry");
+								e.printStackTrace();
+								kybd.nextLine();
+							}// end catch
+						}// end while
+					}// end if
+				default:
+					System.out.println("Unrecognised Command: " + intChoice
+							+ "\n");
+					break;
+				}
+
+			}// end switch
+			catch (Exception e) {
+				System.out.println("Invalid Entry");
+				kybd.nextLine();
+			}// end catch
+		}
+		// end while
 	}
 
-	/*
-	 while (escape == 1) {
-	  
-	  login(); try { intChoice = kybd.nextInt(); switch (intChoice) { case 1:
-	  if (loginAdminFunction() == 1) { while (intChoice != 0) { try {
-	  adminMenu(); intChoice = kybd.nextInt(); switch (intChoice) { case 1:
-	  kybd.reset(); addFilmFunction(); break; case 2: staff.viewStaff(); break;
-	  case 0: break; default: System.out.println("Unrecognised Command: " +
-	  intChoice); kybd.nextLine(); break; } }// end switch catch (Exception e)
-	  { System.out.println("Invalid Entry"); kybd.nextLine(); } }// end while }
-	  // end if break; // end case 1 case 2: if (loginUserFunction() == 1) {
-	  kybd.reset(); while (intChoice != 0) { userMenu(); try { intChoice =
-	  kybd.nextInt(); switch (intChoice) { case 1: while (intChoice != 3) {
-	  bookingMenu(); kybd.reset(); intChoice = kybd.nextInt(); switch
-	  (intChoice) { case 1: kybd.reset(); // CHANGE advancedBooking(); break;
-	  case 2: kybd.reset(); break; case 3: break; default: System.out
-	  .println("Unrecognised Command: " + intChoice + "\n"); kybd.reset(); } }
-	  break; case 2: displayShowings(); kybd.reset(); intChoice =
-	  kybd.nextInt(); switch (intChoice) { case 1: kybd.reset();
-	  showings.showShowings(); }// end switch break; case 3: break; case 0:
-	  break; default: System.out.println("Unrecognised Command: " + intChoice +
-	 "\n"); kybd.reset(); }// end switch } catch (Exception e) {
-	 System.out.println("Invalid Entry"); e.printStackTrace();
-	  kybd.nextLine(); }// end catch }// end while }// end if default:
-	  System.out.println("Unrecognised Command: " + intChoice + "\n"); break; }
-	  
-	  }// end switch catch (Exception e) { System.out.println("Invalid Entry");
-	  kybd.nextLine(); }// end catch }// end while }// end main
-	  */
+	// end main
 
 	public static int loginAdminFunction() {
 		System.out.println("User Name:");
@@ -166,8 +259,6 @@ public class Main {
 
 	public static boolean addFilmFunction() {
 		Film newFilm = new Film();
-		System.out.println("Film ID:");
-		newFilm.setIntFilmID(kybd.nextInt());
 		System.out.println("Film Title:");
 		try {
 			newFilm.setStrFilmName(lineReader.readLine());
@@ -177,6 +268,8 @@ public class Main {
 		System.out.println("Film Rating:");
 		newFilm.setIntRating(kybd.nextInt());
 		films.addFilm(newFilm);
+		FilmShowing showing = new FilmShowing();
+		showing.addFilm(newFilm);
 		return true;
 	}
 
@@ -208,7 +301,8 @@ public class Main {
 			Seats seatBooking = new Seats(newBooking);
 			System.out.println("Number of Seats: ");
 			intCase = kybd.nextInt();
-			newBooking.setDblTotalPrice(newBooking.getDblTotalPrice() * intCase);
+			newBooking
+					.setDblTotalPrice(newBooking.getDblTotalPrice() * intCase);
 			if (intCase > 10 || intCase <= 0) {
 				System.out
 						.println("Exceeds maximum number of seats per booking");
@@ -467,7 +561,8 @@ public class Main {
 		System.out.println("***	Booking Menu	***	\n");
 		System.out.println("1:	Advanced Booking");
 		System.out.println("2:	Booking");
-		System.out.println("3:	Return");
+		System.out.println("3:	Show Bookings");
+		System.out.println("4:	Return");
 		System.out.println("_");
 	}
 

@@ -56,17 +56,26 @@ public class FilmShowing extends Film {
 	 * @param _dblPrice
 	 *            passed Price
 	 */
-	public FilmShowing(Film _objFilmID, String _strDate, Seats _objSeats,
+	public FilmShowing(Film _objFilm, String _strDate, Seats _objSeats,
 			double _dblPrice) {
-		super(_objFilmID.getStrFilmName(), _objFilmID.getIntRating());
+		super(_objFilm.getStrFilmName(), _objFilm.getIntRating());
 		intShowingID = generateFSID();
 		strDateTime = _strDate;
 		strScreenNum = _objSeats.getStrScreen();
 		dblPrice = _dblPrice;
 	}
 
+	public FilmShowing(Film _objFilm) {
+		intShowingID = generateFSID();
+	}
+
 	public int getIntShowingID() {
 		return intShowingID;
+	}
+
+	public void setStrDate(String _strDate) {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		this.strDateTime = dateFormat.format(_strDate);
 	}
 
 	public void setIntShowingID(int _intShowingID) {
