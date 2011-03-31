@@ -1,0 +1,20 @@
+Page: 3
+
+Pricing (Dynamic)
+
+Booking Type (Over-The-Desk [Hide Below], Advance)
+
+First Name
+Last Name
+DOB
+Phone Number
+
+Payment Type (Cash [Hide Below], Mastercard, 
+Card Number
+Name On Card
+Start Date
+Exp Date
+Issue Number
+Security Coad
+
+Page 4: Success OR Error (Seats taken in mean time, invalid age)

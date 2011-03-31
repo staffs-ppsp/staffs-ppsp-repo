@@ -1,0 +1,43 @@
+%DEFAULT_PROPERTIES%
+template-form-destination
+/login
+template-toolbar-book
+link-disabled
+%SIDE_TITLE%
+Please Login
+%SIDE_CONTENT%
+Login to view options
+%MAIN_TITLE%
+Please Login
+%MAIN_CONTENT%
+<table border="0" cellpadding="0" cellspacing="10" width="100%">
+	<tr>
+		<td align="center" valign="middle" width="100%" class="main-controls-cell" colspan="2">
+			<div class="main-controls-container main-controls-sizer">
+				<b>Username:</b>
+				<br />
+				<div class="main-controls-control">
+					<input type="text" name="username" class="fullwidth" />
+				</div>
+				<br />
+				<b>Password:</b>
+				<br />
+				<div class="main-controls-control">
+					<input type="password" name="password" class="fullwidth" />
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" width="50%" class="main-controls-cell" colspan="1">
+			<div class="main-controls-container">
+				<button type="submit" name="submittype" value="login">Login</button>
+			</div>
+		</td>
+		<td align="center" valign="middle" width="50%" class="main-controls-cell" colspan="1">
+			<div class="main-controls-container">
+				<button type="reset">Reset</button>
+			</div>
+		</td>
+	</tr>
+</table>

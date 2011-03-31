@@ -451,12 +451,12 @@ public class Main {
 				// 1.5
 				seatBooking.setObjRow(Row.H);
 				newBooking
-						.setDblTotalPrice(newBooking.getDblTotalPrice() * 1.5);
+						.setDblTotalPrice(newBooking.getDblTotalPrice() * dblPremium);
 				break;
 			case 'I':
 				seatBooking.setObjRow(Row.I);
 				newBooking
-						.setDblTotalPrice(newBooking.getDblTotalPrice() * 1.5);
+						.setDblTotalPrice(newBooking.getDblTotalPrice() * dblPremium);
 				break;
 			default:
 				System.out.println("Invalid Seat");

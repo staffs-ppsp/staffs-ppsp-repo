@@ -36,7 +36,9 @@ public class Booking {
 
 	/**
 	 * Constrcutor for creating an array list to hol bookings
-	 * @param _strBookings the 'name' of the bookings
+	 * 
+	 * @param _strBookings
+	 *            the 'name' of the bookings
 	 */
 	public Booking(String _strBookings) {
 		bookings = new ArrayList<Booking>();
@@ -44,7 +46,9 @@ public class Booking {
 
 	/**
 	 * constructor when the staff object is known
-	 * @param _objStaff the staff details
+	 * 
+	 * @param _objStaff
+	 *            the staff details
 	 */
 	public Booking(Staff _objStaff) {
 		this.intBookingID = generateBookingID();
@@ -53,8 +57,11 @@ public class Booking {
 
 	/**
 	 * Constructor when the customer details and staff details are known
-	 * @param _objCustomer the customer
-	 * @param _objStaff the staff
+	 * 
+	 * @param _objCustomer
+	 *            the customer
+	 * @param _objStaff
+	 *            the staff
 	 */
 	public Booking(Customer _objCustomer, Staff _objStaff) {
 		this.intBookingID = generateBookingID();
@@ -63,10 +70,15 @@ public class Booking {
 	}
 
 	/**
-	 * Constructor for a Booking when all the details are known - usually for hardcoding
-	 * @param _objCustomer the customer who is making the booking
-	 * @param _objStaff the staff member who is making the booking
-	 * @param _objFilmShowing the film which the booking is for
+	 * Constructor for a Booking when all the details are known - usually for
+	 * hardcoding
+	 * 
+	 * @param _objCustomer
+	 *            the customer who is making the booking
+	 * @param _objStaff
+	 *            the staff member who is making the booking
+	 * @param _objFilmShowing
+	 *            the film which the booking is for
 	 */
 	public Booking(Customer _objCustomer, Staff _objStaff,
 			FilmShowing _objFilmShowing) {
@@ -129,33 +141,51 @@ public class Booking {
 
 	/**
 	 * method to add bookings
-	 * @param _objBooking the passed booking object to add to the array
+	 * 
+	 * @param _objBooking
+	 *            the passed booking object to add to the array
 	 */
 	public void addBooking(Booking _objBooking) {
 		bookings.add(_objBooking);
+		System.out.println("Booking with ID: " + _objBooking.getIntBookingID()
+				+ " has been added\n");
 	}
 
 	/**
 	 * method to show all the bookings
 	 */
 	public void showBookings() {
-		for (int i = 0; i < bookings.size(); i++) {
-			System.out.println(bookings.get(i).toString());
+		if (bookings.size() == 0) {
+			System.out.println("No bookings\n");
+		} else {
+			for (int i = 0; i < bookings.size(); i++) {
+				System.out.println(bookings.get(i).toString());
+			}
 		}
 	}
-	
+
+	/**
+	 * method to cancel bookings
+	 * @param _intBookingID passed booking ID to remove
+	 * @return true if the booking was removed, else returns false if the booking was not found.
+	 */
 	public boolean cancelBooking(int _intBookingID) {
 		for (Booking b : bookings) {
 			if (b.getIntBookingID() == _intBookingID) {
+				System.out.println("Booking with ID: " + b.getIntBookingID()
+						+ " has been removed\n");
 				bookings.remove(b);
 				return true;
 			}
 		}
+		System.out.println("Booking with ID: " + _intBookingID
+				+ " was not found\n");
 		return false;
 	}
 
 	/**
 	 * method to generate a bookingID
+	 * 
 	 * @return the booking ID
 	 */
 	public int generateBookingID() {
@@ -165,6 +195,7 @@ public class Booking {
 
 	/**
 	 * method to get the date and time
+	 * 
 	 * @return the date and time as a string
 	 */
 	public String getDateTime() {
@@ -181,7 +212,7 @@ public class Booking {
 		return "Booking ID: " + intBookingID + "\nCustomerID: "
 				+ getIntCustomerID() + "\nStaff ID: " + getIntStaffID()
 				+ "\nShowing ID: " + getIntShowingID() + "\nTotal Price: "
-				+ getDblTotalPrice() + "\nBooking Made At: " + getDateTime();
+				+ getDblTotalPrice() + "\nBooking Made At: " + getDateTime() + "\n";
 	}
 
 }

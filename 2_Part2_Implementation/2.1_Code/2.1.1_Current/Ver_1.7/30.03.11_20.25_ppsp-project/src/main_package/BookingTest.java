@@ -100,5 +100,15 @@ public class BookingTest {
 	public final void testToString() {
 		assertNotNull(fullBooking.toString());
 	}
+	
+	@Test 
+	public final void testCancelBooking() {
+		booking.addBooking(fullBooking);
+		assertNotNull(booking);
+		booking.showBookings();
+		booking.cancelBooking(57);
+		booking.showBookings();
+		
+	}
 
 }

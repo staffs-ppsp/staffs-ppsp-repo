@@ -49,16 +49,28 @@ ADDED
 - james's document
 - james's new code
 
-
 Update 30.03.2011 14.44
-
-
 
 CHANGED
 - some functionality in the code
 
-
-
 ADDED
 - JUnit tests
+
+
+
+Update 1/04/2011 00.19
+
+
+
+CHANGED
+
+
+- final document
+
+- most documents
+
+- most directories
+
+
 

@@ -1,0 +1,20 @@
+I know you can't use it anymore, but the fixed, partially working webUI and server, is now in the dropbox.
+
+This is similar to how it was when I sent it yous on Tuesday near midnight, but after having major problems, I have spent the last 8 hours completely re-overhauling how the pages are stored/processed, and how the sessions were managed (internally instead of with cookies)
+
+Login now fully works, and as all the server, session and template management code is there (the extremely hard part), adding the code for all the booking interaction shouldn't take more than an hour or two.
+
+I'm actually quite proud of it tbh, but unfortunately, due to time, you have rightly assigned it the status of useless
+
+
+
+
+Scott
+
+
+
+
+Known Issues:
+	* Images are not working.
+	* As mentioned above, while the booking pages are there and complete, the interaction between them is not
+	* No comments
